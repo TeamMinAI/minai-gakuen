@@ -28,14 +28,17 @@ body{
 }
 
 header{
-  background:#20242b;
-  color:white;
-  text-align:center;
-  padding:28px 16px 24px;
+  position:relative;overflow:hidden;
+  background:linear-gradient(135deg,#20242b 0%,#394451 100%);
+  color:white;text-align:center;padding:34px 16px 30px;
 }
+header:before,header:after{content:"";position:absolute;border-radius:50%;background:rgba(255,255,255,.06)}
+header:before{width:180px;height:180px;left:-90px;top:-80px}
+header:after{width:240px;height:240px;right:-110px;bottom:-150px}
 
 .logo{
-  font-size:12px;
+  position:relative;z-index:1;
+  font-size:11px;
   font-weight:800;
   letter-spacing:.12em;
   opacity:.75;
@@ -43,6 +46,7 @@ header{
 }
 
 h1{
+  position:relative;z-index:1;
   margin:0;
   font-size:30px;
   line-height:1.15;
@@ -50,19 +54,23 @@ h1{
 }
 
 .subtitle{
+  position:relative;z-index:1;
   margin:8px 0 0;
   font-size:13px;
   opacity:.8;
 }
 
 main{
-  max-width:720px;
+  max-width:760px;
   margin:auto;
   padding-bottom:30px;
 }
 
 .subject{
-  padding:18px 12px 14px;
+  margin:12px 10px 0;
+  padding:18px 12px 15px;
+  border-radius:22px;
+  box-shadow:0 5px 18px rgba(32,36,43,.05);
 }
 
 .subject-title{
@@ -106,6 +114,8 @@ main{
   box-shadow:0 2px 7px rgba(0,0,0,.05);
   transition:transform .12s,box-shadow .12s;
 }
+.game:hover{transform:translateY(-2px);box-shadow:0 6px 15px rgba(0,0,0,.09)}
+.game:focus-visible{outline:3px solid rgba(32,36,43,.25);outline-offset:2px}
 
 .game:active{transform:scale(.97);}
 
@@ -150,6 +160,7 @@ main{
 }
 
 footer{
+  margin-top:18px;
   text-align:center;
   padding:22px 15px 30px;
   color:#888;
