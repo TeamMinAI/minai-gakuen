@@ -3,97 +3,194 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
-<meta name="description" content="みんあい学園｜無料で遊べる小学生向け学習ゲーム">
-<title>みんあい学園｜無料学習ゲーム</title>
+<meta name="theme-color" content="#f5f8ff">
+<meta name="description" content="みんあい学園｜未就学児から小学生まで、遊びながら学べる完全無料の学習ゲーム。">
+<title>みんあい学園｜無料で遊べる学習ゲーム</title>
 <style>
-:root{--ink:#20242b;--white:#fff;--line:rgba(0,0,0,.08);--radius:16px}
+:root{--ink:#202943;--muted:#657087;--paper:#f5f8ff;--line:#e4e9f2;--blue:#3458d4;--shadow:0 5px 18px rgba(31,48,85,.07)}
 *{box-sizing:border-box}
-html{scroll-behavior:smooth}
-body{margin:0;font-family:system-ui,-apple-system,"Noto Sans JP",sans-serif;color:var(--ink);background:#f5f5f5}
-header{position:relative;overflow:hidden;background:linear-gradient(135deg,#20242b 0%,#394451 100%);color:white;text-align:center;padding:34px 16px 30px}
-header:before,header:after{content:"";position:absolute;border-radius:50%;background:rgba(255,255,255,.06)}
-header:before{width:180px;height:180px;left:-90px;top:-80px}
-header:after{width:240px;height:240px;right:-110px;bottom:-150px}
-.logo{position:relative;z-index:1;font-size:11px;font-weight:800;letter-spacing:.12em;opacity:.75;margin-bottom:7px}
-h1{position:relative;z-index:1;margin:0;font-size:30px;line-height:1.15;font-weight:900}
-.subtitle{position:relative;z-index:1;margin:8px 0 0;font-size:13px;opacity:.8}
-main{max-width:760px;margin:auto;padding-bottom:30px}
-.subject{margin:12px 10px 0;padding:18px 12px 15px;border-radius:22px;box-shadow:0 5px 18px rgba(32,36,43,.05)}
-.subject-title{display:flex;align-items:center;gap:8px;margin:0 4px 10px;font-size:20px;font-weight:900}
-.subject-count{font-size:11px;font-weight:700;opacity:.6}
-.subject.sansuu{background:#fff4d8}.subject.kokugo{background:#ffe8ec}.subject.shakai{background:#e5f4ff}.subject.rika{background:#e7f8e9}.subject.eigo{background:#eee8ff}.subject.sougou{background:#fff0da}
-.games{display:grid;grid-template-columns:1fr 1fr;gap:9px}
-.game{display:flex;align-items:center;gap:9px;min-height:86px;padding:9px 10px;background:white;border:1px solid var(--line);border-radius:var(--radius);color:var(--ink);text-decoration:none;box-shadow:0 2px 7px rgba(0,0,0,.05);transition:transform .12s,box-shadow .12s}
-.game:hover{transform:translateY(-2px);box-shadow:0 6px 15px rgba(0,0,0,.09)}
-.game:focus-visible{outline:3px solid rgba(32,36,43,.25);outline-offset:2px}
-.game:active{transform:scale(.97)}
-.icon{width:40px;height:40px;flex:0 0 40px;display:flex;align-items:center;justify-content:center;font-size:25px;background:#f7f7f7;border-radius:12px}
-.game-info{min-width:0;flex:1}
-.game-title{font-size:13px;line-height:1.35;font-weight:800}
-.target{display:inline-block;margin-top:4px;padding:2px 6px;border-radius:999px;background:#f0f0f0;color:#666;font-size:9px;line-height:1.3;font-weight:700}
-.description{margin-top:4px;color:#777;font-size:9px;line-height:1.4}
-.play{flex:0 0 auto;width:25px;height:25px;display:flex;align-items:center;justify-content:center;border-radius:50%;background:#20242b;color:white;font-size:11px}
-footer{margin-top:18px;text-align:center;padding:22px 15px 30px;color:#888;font-size:11px;background:#fff}
-@media(min-width:700px){header{padding:40px 20px 35px}h1{font-size:38px}.subject{padding:25px 20px 20px}.games{grid-template-columns:repeat(3,1fr);gap:12px}.game{min-height:112px}.game-title{font-size:14px}.description{font-size:10px}}
-@media(max-width:360px){h1{font-size:27px}.games{gap:7px}.game{min-height:82px;padding:8px;gap:7px}.icon{width:34px;height:34px;flex-basis:34px;font-size:21px}.game-title{font-size:12px}.target{font-size:8px}.description{font-size:8px}.play{width:22px;height:22px;font-size:9px}}
+html{scroll-behavior:smooth;scroll-padding-top:12px}
+body{margin:0;font-family:system-ui,-apple-system,BlinkMacSystemFont,"Noto Sans JP",sans-serif;color:var(--ink);background:var(--paper);line-height:1.5}
+a{color:inherit}
+.hero{position:relative;overflow:hidden;padding:26px 18px 24px;text-align:center;color:#fff;background:linear-gradient(145deg,#243d86,#5c73dc 60%,#8a9bf1)}
+.hero:before,.hero:after{content:"";position:absolute;border-radius:50%;background:rgba(255,255,255,.09);pointer-events:none}
+.hero:before{width:190px;height:190px;left:-90px;top:-100px}.hero:after{width:240px;height:240px;right:-110px;bottom:-170px}
+.brand,.hero h1,.hero p,.free-note{position:relative;z-index:1}
+.brand{font-size:10px;letter-spacing:.16em;font-weight:900;opacity:.85}
+.hero h1{margin:5px 0 4px;font-size:clamp(29px,8vw,40px);line-height:1.15;font-weight:950;letter-spacing:.04em}
+.hero p{margin:8px 0 13px;font-size:14px}
+.free-note{display:inline-flex;align-items:center;gap:6px;padding:7px 12px;border:1px solid rgba(255,255,255,.35);border-radius:999px;background:rgba(255,255,255,.13);font-size:12px;font-weight:800}
+main{width:min(100%,820px);margin:auto;padding:14px 12px 28px}
+.intro{margin:2px 3px 14px;color:var(--muted);font-size:12px}
+.finder{position:sticky;top:0;z-index:10;margin:0 -12px 16px;padding:10px 12px 12px;background:rgba(245,248,255,.96);backdrop-filter:blur(12px);border-bottom:1px solid rgba(220,227,240,.85)}
+.search{display:flex;align-items:center;gap:8px;width:100%;min-height:46px;padding:0 13px;border:1px solid #dbe2f0;border-radius:14px;background:white;box-shadow:0 2px 7px rgba(31,48,85,.04)}
+.search span{font-size:18px}.search input{width:100%;min-width:0;border:0;outline:0;background:transparent;color:var(--ink);font:inherit;font-size:16px}
+.filters{display:flex;gap:7px;overflow-x:auto;padding:9px 0 1px;scrollbar-width:none}.filters::-webkit-scrollbar{display:none}
+.filter{flex:0 0 auto;min-height:37px;padding:7px 12px;border:1px solid #dce3f0;border-radius:999px;background:white;color:#49546c;font:inherit;font-size:12px;font-weight:800;white-space:nowrap;cursor:pointer}
+.filter[aria-pressed="true"]{background:#2f4fbf;color:white;border-color:#2f4fbf}
+.quick-title{margin:15px 2px 8px;font-size:13px;font-weight:900}
+.quick-links{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:8px}
+.quick-link{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:4px;min-height:76px;padding:9px 4px;text-align:center;text-decoration:none;background:#fff;border:1px solid var(--line);border-radius:16px;box-shadow:var(--shadow);font-size:11px;font-weight:850}
+.quick-link .emoji{font-size:23px;line-height:1.2}
+.quick-link.preschool{background:#fff2cf;border-color:#f4d77d}
+.section{margin:16px 0 0;padding:15px 11px 12px;border-radius:22px;border:1px solid rgba(30,45,80,.05);box-shadow:var(--shadow);scroll-margin-top:140px}
+.section.sougou{background:#fff0d9}.section.sansuu{background:#fff4d9}.section.kokugo{background:#ffeaf0}.section.shakai{background:#e8f4ff}.section.rika{background:#e9f8eb}.section.eigo{background:#f0eaff}.section.preschool{background:#fff0c9;border:2px solid #f0cf67}
+.section-head{display:flex;align-items:center;gap:8px;margin:0 3px 10px}
+.section-head h2{margin:0;font-size:19px;line-height:1.3;font-weight:950}
+.count{margin-left:auto;flex:0 0 auto;padding:3px 8px;border-radius:999px;background:rgba(255,255,255,.75);color:#5c6578;font-size:10px;font-weight:800}
+.section-desc{margin:-3px 3px 11px;color:#5e6472;font-size:12px}
+.games{display:grid;grid-template-columns:1fr;gap:9px}
+.game{display:flex;align-items:center;gap:11px;min-width:0;min-height:86px;padding:11px;background:white;border:1px solid rgba(33,46,76,.09);border-radius:16px;text-decoration:none;box-shadow:0 2px 7px rgba(20,30,60,.04);transition:transform .12s,box-shadow .12s}
+.game:active{transform:scale(.985)}.game:focus-visible,.filter:focus-visible,.quick-link:focus-visible{outline:3px solid #6b85f5;outline-offset:2px}
+.game-icon{width:48px;height:48px;flex:0 0 48px;display:grid;place-items:center;border-radius:14px;background:#f2f5fb;font-size:27px}
+.game-info{min-width:0;flex:1}.game-title{font-size:14px;line-height:1.4;font-weight:900;overflow-wrap:anywhere}
+.target{display:inline-block;margin-top:4px;padding:3px 7px;border-radius:999px;background:#edf1f8;color:#536079;font-size:10px;line-height:1.25;font-weight:800}
+.description{margin-top:4px;color:#70798b;font-size:11px;line-height:1.4}
+.play{display:grid;place-items:center;flex:0 0 30px;width:30px;height:30px;border-radius:50%;background:#304fb9;color:#fff;font-size:12px}
+.empty{display:none;margin:18px 4px;padding:18px;text-align:center;border-radius:14px;background:#fff;color:var(--muted);font-size:13px}
+.footer{padding:24px 15px 34px;text-align:center;color:#788197;font-size:11px}
+.footer strong{display:block;color:#49546c;font-size:12px;margin-bottom:5px}
+@media(min-width:560px){main{padding:18px 18px 34px}.finder{margin-left:-18px;margin-right:-18px;padding-left:18px;padding-right:18px}.games{grid-template-columns:repeat(2,minmax(0,1fr))}.section{padding:18px 15px 15px}.game{min-height:100px}.game-icon{width:45px;height:45px;flex-basis:45px}.game-title{font-size:13px}.description{font-size:10px}}
+@media(min-width:760px){.hero{padding:38px 20px 32px}.hero p{font-size:15px}.finder{position:static;margin:0 0 12px;padding:10px 0;background:transparent;border:0;backdrop-filter:none}.games{grid-template-columns:repeat(3,minmax(0,1fr))}.quick-link{min-height:82px}.section{padding:20px 18px 18px}}
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}*{transition:none!important}}
 </style>
 </head>
 <body>
-<header><div class="logo">TEAM-MinAI</div><h1>みんあい学園</h1><p class="subtitle">遊んで学べる、無料の学習ゲーム</p></header>
+<header class="hero">
+  <div class="brand">TEAM-MinAI</div>
+  <h1>みんあい学園</h1>
+  <p>遊んでいたら、いつの間にか学んでいた。</p>
+  <div class="free-note">⭐ ぜんぶ無料・課金なし</div>
+</header>
 <main>
+  <p class="intro">あそびたいゲームをえらんでね。おうちの人といっしょに選んでもOK！</p>
+  <div class="finder" aria-label="ゲームを探す">
+    <label class="search"><span aria-hidden="true">🔎</span><input id="gameSearch" type="search" placeholder="ゲーム名・ことばでさがす" autocomplete="off" aria-label="ゲーム名や内容で検索"></label>
+    <div class="filters" role="group" aria-label="対象年齢でしぼりこむ">
+      <button class="filter" type="button" data-age="all" aria-pressed="true">ぜんぶ</button>
+      <button class="filter" type="button" data-age="preschool" aria-pressed="false">🌱 未就学児</button>
+      <button class="filter" type="button" data-age="lower" aria-pressed="false">📘 小学校低学年</button>
+      <button class="filter" type="button" data-age="elementary" aria-pressed="false">🚀 小学生全般</button>
+    </div>
+  </div>
 
-<section class="subject sougou">
-<h2 class="subject-title">🎒 総合学習 <span class="subject-count">3ゲーム</span></h2>
-<div class="games">
-<a class="game" href="https://makeplay.ai/p/jbpetjkhx6" target="_blank" rel="noopener"><div class="icon">🌈</div><div class="game-info"><div class="game-title">いろとり！</div><div class="target">対象：小学生全般</div><div class="description">色をうばわれた7つの島を知識ですくうRPG</div></div><div class="play">▶</div></a>
-<a class="game" href="https://makeplay.ai/p/b79mdckv9y" target="_blank" rel="noopener"><div class="icon">🌏</div><div class="game-info"><div class="game-title">異世界ニッポン<br>～無知の闇から世界を救え～</div><div class="target">対象：小学生全般</div><div class="description">異世界のニッポンを君の知識ですくうRPG</div></div><div class="play">▶</div></a>
-<a class="game" href="https://makeplay.ai/p/n8xm5mxv7u" target="_blank" rel="noopener"><div class="icon">🌱</div><div class="game-info"><div class="game-title">スタディ・ガーデン<br>〜4つの秘宝とわたしの街〜</div><div class="target">対象：小学生全般</div><div class="description">農場をそだてる、ほのぼの系シミュレーション</div></div><div class="play">▶</div></a>
-</div></section>
+  <div class="quick-title">どんなあそびをする？</div>
+  <nav class="quick-links" aria-label="ゲームの種類">
+    <a class="quick-link preschool" href="#preschool"><span class="emoji">🎒</span>しょうがっこうへいこう</a>
+    <a class="quick-link" href="#sougou"><span class="emoji">🗺️</span>ぼうけんする</a>
+    <a class="quick-link" href="#sansuu"><span class="emoji">🔢</span>かずであそぶ</a>
+    <a class="quick-link" href="#kokugo"><span class="emoji">🔤</span>ことばであそぶ</a>
+    <a class="quick-link" href="#shakai"><span class="emoji">🌏</span>日本を知る</a>
+    <a class="quick-link" href="#rika"><span class="emoji">🔬</span>ふしぎを発見</a>
+  </nav>
 
-<section class="subject sansuu">
-<h2 class="subject-title">🔢 算数 <span class="subject-count">7ゲーム</span></h2>
-<div class="games">
-<a class="game" href="https://makeplay.ai/p/y6pdstykzd" target="_blank" rel="noopener"><div class="icon">🐮</div><div class="game-info"><div class="game-title">かぞえてモ～！</div><div class="target">対象：低学年向け</div><div class="description">10まで数の概念と足し算・引き算に特化したゲーム</div></div><div class="play">▶</div></a>
-<a class="game" href="https://makeplay.ai/p/wxcn4fnvyg" target="_blank" rel="noopener"><div class="icon">🪄</div><div class="game-info"><div class="game-title">さんすうクエスト まほうのぼうけん</div><div class="target">対象：小学1～2年生</div><div class="description">一問一答式算数ゲーム</div></div><div class="play">▶</div></a>
-<a class="game" href="https://makeplay.ai/p/j6q9jbjgre" target="_blank" rel="noopener"><div class="icon">⚔️</div><div class="game-info"><div class="game-title">さんすうのぼうけん</div><div class="target">対象：小学1～2年生</div><div class="description">アクション風算数ゲーム</div></div><div class="play">▶</div></a>
-<a class="game" href="https://makeplay.ai/p/2rh48c93qj" target="_blank" rel="noopener"><div class="icon">👑</div><div class="game-info"><div class="game-title">ひらめけ数の王国</div><div class="target">対象：低学年向け</div><div class="description">小学校で苦手になりやすい文章題に特化した対策ゲーム</div></div><div class="play">▶</div></a>
-<a class="game" href="https://makeplay.ai/p/t8hdcnp7yk" target="_blank" rel="noopener"><div class="icon">🕵️</div><div class="game-info"><div class="game-title">ひらめき探偵団</div><div class="target">対象：低学年向け</div><div class="description">小学校で苦手になりやすい文章題に特化した対策ゲーム</div></div><div class="play">▶</div></a>
-<a class="game" href="https://makeplay.ai/p/5k7yvrrfp5" target="_blank" rel="noopener"><div class="icon">⚡</div><div class="game-info"><div class="game-title">算数スピードスター</div><div class="target">対象：小学生全般</div><div class="description">四則計算・演算子ドリルゲーム</div></div><div class="play">▶</div></a>
-<a class="game" href="https://makeplay.ai/p/adwgpwpw9s" target="_blank" rel="noopener"><div class="icon">⏰</div><div class="game-info"><div class="game-title">時と不思議な仲間たち</div><div class="target">対象：小学生低学年向け</div><div class="description">時計の読みや秒・分などの練習ゲーム</div></div><div class="play">▶</div></a>
-</div></section>
+  <section class="section preschool" id="preschool" data-section-age="preschool">
+    <div class="section-head"><h2>🎒 しょうがっこうじゅんび</h2><span class="count">未就学児向け</span></div>
+    <p class="section-desc">どうぶつたちといっしょに、小学校へ出発しよう！</p>
+    <div class="games">
+      <a class="game" data-age="preschool" href="https://makeplay.ai/p/c2xm8nxagu" target="_blank" rel="noopener"><div class="game-icon">🎒</div><div class="game-info"><div class="game-title">しょうがっこうへいこう</div><div class="target">対象：未就学児</div><div class="description">どうぶつたちを助けながら小学校を目指す冒険</div></div><span class="play" aria-hidden="true">▶</span></a>
+    </div>
+  </section>
 
-<section class="subject kokugo">
-<h2 class="subject-title">📚 国語 <span class="subject-count">6ゲーム</span></h2>
-<div class="games">
-<a class="game" href="https://makeplay.ai/p/32tbcraf66" target="_blank" rel="noopener"><div class="icon">🔤</div><div class="game-info"><div class="game-title">もじつなぎ</div><div class="target">対象：低学年向け</div><div class="description">ひらがな・カタカナゲーム</div></div><div class="play">▶</div></a>
-<a class="game" href="https://makeplay.ai/p/9z2uxc3e42" target="_blank" rel="noopener"><div class="icon">📚</div><div class="game-info"><div class="game-title">こくごクエスト ことばのぼうけん</div><div class="target">対象：小学1～2年生</div><div class="description">一問一答式国語ゲーム</div></div><div class="play">▶</div></a>
-<a class="game" href="https://makeplay.ai/p/5hn42wr9c8" target="_blank" rel="noopener"><div class="icon">🥷</div><div class="game-info"><div class="game-title">ことば忍法帖</div><div class="target">対象：小学1～2年生</div><div class="description">アクション風国語ゲーム</div></div><div class="play">▶</div></a>
-<a class="game" href="https://makeplay.ai/p/bt3dfed2jb" target="_blank" rel="noopener"><div class="icon">👹</div><div class="game-info"><div class="game-title">妖怪文法絵巻</div><div class="target">対象：小学校低学年向け</div><div class="description">国語文法を練習するゲーム</div></div><div class="play">▶</div></a>
-<a class="game" href="https://makeplay.ai/p/s5zdppqghu" target="_blank" rel="noopener"><div class="icon">🗺️</div><div class="game-info"><div class="game-title">ことばでぼうけん</div><div class="target">対象：低学年向け</div><div class="description">小学校で苦手になりやすい文章題に特化した対策ゲーム</div></div><div class="play">▶</div></a>
-<a class="game" href="https://makeplay.ai/p/7hkbejm22e" target="_blank" rel="noopener"><div class="icon">🔠</div><div class="game-info"><div class="game-title">もじよみものがたり</div><div class="target">対象：小学生低学年向け</div><div class="description">文字の読みを練習するゲーム</div></div><div class="play">▶</div></a>
-</div></section>
+  <section class="section sougou" id="sougou">
+    <div class="section-head"><h2>🗺️ 総合学習・ぼうけん</h2><span class="count">3ゲーム</span></div>
+    <p class="section-desc">知識を使って、世界を冒険しよう。</p>
+    <div class="games">
+      <a class="game" data-age="elementary" href="https://makeplay.ai/p/jbpetjkhx6" target="_blank" rel="noopener"><div class="game-icon">🌈</div><div class="game-info"><div class="game-title">いろとり！</div><div class="target">対象：小学生全般</div><div class="description">色をうばわれた7つの島を知識ですくうRPG</div></div><span class="play" aria-hidden="true">▶</span></a>
+      <a class="game" data-age="elementary" href="https://makeplay.ai/p/b79mdckv9y" target="_blank" rel="noopener"><div class="game-icon">🌏</div><div class="game-info"><div class="game-title">異世界ニッポン ～無知の闇から世界を救え～</div><div class="target">対象：小学生全般</div><div class="description">異世界のニッポンを君の知識ですくうRPG</div></div><span class="play" aria-hidden="true">▶</span></a>
+      <a class="game" data-age="elementary" href="https://makeplay.ai/p/n8xm5mxv7u" target="_blank" rel="noopener"><div class="game-icon">🌱</div><div class="game-info"><div class="game-title">スタディ・ガーデン ～4つの秘宝とわたしの街～</div><div class="target">対象：小学生全般</div><div class="description">農場をそだてる、ほのぼの系シミュレーション</div></div><span class="play" aria-hidden="true">▶</span></a>
+    </div>
+  </section>
 
-<section class="subject shakai">
-<h2 class="subject-title">🗾 社会 <span class="subject-count">3ゲーム</span></h2>
-<div class="games">
-<a class="game" href="https://makeplay.ai/p/v6gt7fe48r" target="_blank" rel="noopener"><div class="icon">🗾</div><div class="game-info"><div class="game-title">しゃかいクエスト 未来日本のたび</div><div class="target">対象：小学1～2年生</div><div class="description">一問一答式社会ゲーム</div></div><div class="play">▶</div></a>
-<a class="game" href="https://makeplay.ai/p/nzu5dnkz2f" target="_blank" rel="noopener"><div class="icon">🔍</div><div class="game-info"><div class="game-title">まちがい大発見</div><div class="target">対象：小学1～2年生</div><div class="description">アドベンチャー風社会ゲーム</div></div><div class="play">▶</div></a>
-<a class="game" href="https://makeplay.ai/p/gd8eh6dje5" target="_blank" rel="noopener"><div class="icon">🏔️</div><div class="game-info"><div class="game-title">日本全国テッペンめざせ！</div><div class="target">対象：小学生全般</div><div class="description">日本全国の県名や特産などを学習するゲーム</div></div><div class="play">▶</div></a>
-</div></section>
+  <section class="section sansuu" id="sansuu">
+    <div class="section-head"><h2>🔢 算数</h2><span class="count">7ゲーム</span></div>
+    <div class="games">
+      <a class="game" data-age="lower" href="https://makeplay.ai/p/y6pdstykzd" target="_blank" rel="noopener"><div class="game-icon">🐮</div><div class="game-info"><div class="game-title">かぞえてモ～！</div><div class="target">対象：低学年向け</div><div class="description">10までの数と足し算・引き算</div></div><span class="play">▶</span></a>
+      <a class="game" data-age="lower" href="https://makeplay.ai/p/wxcn4fnvyg" target="_blank" rel="noopener"><div class="game-icon">🪄</div><div class="game-info"><div class="game-title">さんすうクエスト まほうのぼうけん</div><div class="target">対象：小学1～2年生</div><div class="description">一問一答式の算数ゲーム</div></div><span class="play">▶</span></a>
+      <a class="game" data-age="lower" href="https://makeplay.ai/p/j6q9jbjgre" target="_blank" rel="noopener"><div class="game-icon">⚔️</div><div class="game-info"><div class="game-title">さんすうのぼうけん</div><div class="target">対象：小学1～2年生</div><div class="description">アクション風の算数ゲーム</div></div><span class="play">▶</span></a>
+      <a class="game" data-age="lower" href="https://makeplay.ai/p/2rh48c93qj" target="_blank" rel="noopener"><div class="game-icon">👑</div><div class="game-info"><div class="game-title">ひらめけ数の王国</div><div class="target">対象：低学年向け</div><div class="description">文章題に挑戦する対策ゲーム</div></div><span class="play">▶</span></a>
+      <a class="game" data-age="lower" href="https://makeplay.ai/p/t8hdcnp7yk" target="_blank" rel="noopener"><div class="game-icon">🕵️</div><div class="game-info"><div class="game-title">ひらめき探偵団</div><div class="target">対象：低学年向け</div><div class="description">ひらめきを使って問題を解こう</div></div><span class="play">▶</span></a>
+      <a class="game" data-age="elementary" href="https://makeplay.ai/p/5k7yvrrfp5" target="_blank" rel="noopener"><div class="game-icon">⚡</div><div class="game-info"><div class="game-title">算数スピードスター</div><div class="target">対象：小学生全般</div><div class="description">四則計算・演算子ドリルゲーム</div></div><span class="play">▶</span></a>
+      <a class="game" data-age="lower" href="https://makeplay.ai/p/adwgpwpw9s" target="_blank" rel="noopener"><div class="game-icon">⏰</div><div class="game-info"><div class="game-title">時と不思議な仲間たち</div><div class="target">対象：小学校低学年向け</div><div class="description">時計の読み方や秒・分を練習</div></div><span class="play">▶</span></a>
+    </div>
+  </section>
 
-<section class="subject rika">
-<h2 class="subject-title">🔬 理科 <span class="subject-count">2ゲーム</span></h2>
-<div class="games">
-<a class="game" href="https://makeplay.ai/p/7ebf3nebhc" target="_blank" rel="noopener"><div class="icon">🔬</div><div class="game-info"><div class="game-title">りかクエスト</div><div class="target">対象：小学1～2年生</div><div class="description">一問一答式理科ゲーム</div></div><div class="play">▶</div></a>
-<a class="game" href="https://makeplay.ai/p/y6tzsdm7fx" target="_blank" rel="noopener"><div class="icon">🧪</div><div class="game-info"><div class="game-title">りかをたのしくね！</div><div class="target">対象：小学1～2年生</div><div class="description">アクション風理科ゲーム</div></div><div class="play">▶</div></a>
-</div></section>
+  <section class="section kokugo" id="kokugo">
+    <div class="section-head"><h2>📚 国語</h2><span class="count">6ゲーム</span></div>
+    <div class="games">
+      <a class="game" data-age="lower" href="https://makeplay.ai/p/32tbcraf66" target="_blank" rel="noopener"><div class="game-icon">🔤</div><div class="game-info"><div class="game-title">もじつなぎ</div><div class="target">対象：低学年向け</div><div class="description">ひらがな・カタカナゲーム</div></div><span class="play">▶</span></a>
+      <a class="game" data-age="lower" href="https://makeplay.ai/p/9z2uxc3e42" target="_blank" rel="noopener"><div class="game-icon">📚</div><div class="game-info"><div class="game-title">こくごクエスト ことばのぼうけん</div><div class="target">対象：小学1～2年生</div><div class="description">一問一答式の国語ゲーム</div></div><span class="play">▶</span></a>
+      <a class="game" data-age="lower" href="https://makeplay.ai/p/5hn42wr9c8" target="_blank" rel="noopener"><div class="game-icon">🥷</div><div class="game-info"><div class="game-title">ことば忍法帖</div><div class="target">対象：小学1～2年生</div><div class="description">アクション風の国語ゲーム</div></div><span class="play">▶</span></a>
+      <a class="game" data-age="lower" href="https://makeplay.ai/p/bt3dfed2jb" target="_blank" rel="noopener"><div class="game-icon">👹</div><div class="game-info"><div class="game-title">妖怪文法絵巻</div><div class="target">対象：小学校低学年向け</div><div class="description">国語の文法を練習するゲーム</div></div><span class="play">▶</span></a>
+      <a class="game" data-age="lower" href="https://makeplay.ai/p/s5zdppqghu" target="_blank" rel="noopener"><div class="game-icon">🗺️</div><div class="game-info"><div class="game-title">ことばでぼうけん</div><div class="target">対象：低学年向け</div><div class="description">ことばを使って冒険しよう</div></div><span class="play">▶</span></a>
+      <a class="game" data-age="lower" href="https://makeplay.ai/p/7hkbejm22e" target="_blank" rel="noopener"><div class="game-icon">🔠</div><div class="game-info"><div class="game-title">もじよみものがたり</div><div class="target">対象：小学生低学年向け</div><div class="description">文字の読みを練習するゲーム</div></div><span class="play">▶</span></a>
+    </div>
+  </section>
 
-<section class="subject eigo">
-<h2 class="subject-title">🌟 英語 <span class="subject-count">1ゲーム</span></h2>
-<div class="games">
-<a class="game" href="https://makeplay.ai/p/uppydd2h79" target="_blank" rel="noopener"><div class="icon">🌟</div><div class="game-info"><div class="game-title">えいご星の探検隊</div><div class="target">対象：低学年向け</div><div class="description">リズム風英語学習ゲーム</div></div><div class="play">▶</div></a>
-</div></section>
+  <section class="section shakai" id="shakai">
+    <div class="section-head"><h2>🗾 社会</h2><span class="count">3ゲーム</span></div>
+    <div class="games">
+      <a class="game" data-age="lower" href="https://makeplay.ai/p/v6gt7fe48r" target="_blank" rel="noopener"><div class="game-icon">🗾</div><div class="game-info"><div class="game-title">しゃかいクエスト 未来日本のたび</div><div class="target">対象：小学1～2年生</div><div class="description">一問一答式の社会ゲーム</div></div><span class="play">▶</span></a>
+      <a class="game" data-age="lower" href="https://makeplay.ai/p/nzu5dnkz2f" target="_blank" rel="noopener"><div class="game-icon">🔍</div><div class="game-info"><div class="game-title">まちがい大発見</div><div class="target">対象：小学1～2年生</div><div class="description">アドベンチャー風の社会ゲーム</div></div><span class="play">▶</span></a>
+      <a class="game" data-age="elementary" href="https://makeplay.ai/p/gd8eh6dje5" target="_blank" rel="noopener"><div class="game-icon">🏔️</div><div class="game-info"><div class="game-title">日本全国テッペンめざせ！</div><div class="target">対象：小学生全般</div><div class="description">日本の県名や特産を学ぼう</div></div><span class="play">▶</span></a>
+    </div>
+  </section>
+
+  <section class="section rika" id="rika">
+    <div class="section-head"><h2>🔬 理科</h2><span class="count">2ゲーム</span></div>
+    <div class="games">
+      <a class="game" data-age="lower" href="https://makeplay.ai/p/7ebf3nebhc" target="_blank" rel="noopener"><div class="game-icon">🔬</div><div class="game-info"><div class="game-title">りかクエスト</div><div class="target">対象：小学1～2年生</div><div class="description">一問一答式の理科ゲーム</div></div><span class="play">▶</span></a>
+      <a class="game" data-age="lower" href="https://makeplay.ai/p/y6tzsdm7fx" target="_blank" rel="noopener"><div class="game-icon">🧪</div><div class="game-info"><div class="game-title">りかをたのしくね！</div><div class="target">対象：小学1～2年生</div><div class="description">アクション風の理科ゲーム</div></div><span class="play">▶</span></a>
+    </div>
+  </section>
+
+  <section class="section eigo" id="eigo">
+    <div class="section-head"><h2>🌟 英語</h2><span class="count">1ゲーム</span></div>
+    <div class="games">
+      <a class="game" data-age="lower" href="https://makeplay.ai/p/uppydd2h79" target="_blank" rel="noopener"><div class="game-icon">🌟</div><div class="game-info"><div class="game-title">えいご星の探検隊</div><div class="target">対象：低学年向け</div><div class="description">リズムにのって英語に親しむゲーム</div></div><span class="play">▶</span></a>
+    </div>
+  </section>
+  <p class="empty" id="emptyMessage">見つかりませんでした。別のことばで探してみてね。</p>
 </main>
-<footer>© Team-MinAI / みんあい学園</footer>
+<footer class="footer"><strong>みんあい学園</strong>公開中のゲームは試作・改善中のものもあります。<br>気づいたことや感想をぜひ教えてください。<br><br>© Team-MinAI / みんあい学園</footer>
+<script>
+(function(){
+  const search=document.getElementById('gameSearch');
+  const buttons=[...document.querySelectorAll('[data-age].filter')];
+  const games=[...document.querySelectorAll('.game')];
+  const sections=[...document.querySelectorAll('.section')];
+  const empty=document.getElementById('emptyMessage');
+  let age='all';
+  function apply(){
+    const q=search.value.trim().toLocaleLowerCase();
+    let shown=0;
+    games.forEach(card=>{
+      const matchAge=age==='all'||card.dataset.age===age;
+      const matchText=!q||card.textContent.toLocaleLowerCase().includes(q);
+      const visible=matchAge&&matchText;
+      card.hidden=!visible;
+      if(visible)shown++;
+    });
+    sections.forEach(section=>{
+      const visible=[...section.querySelectorAll('.game')].some(card=>!card.hidden);
+      section.hidden=!visible;
+    });
+    empty.style.display=shown?'none':'block';
+  }
+  buttons.forEach(button=>button.addEventListener('click',()=>{
+    age=button.dataset.age;
+    buttons.forEach(b=>b.setAttribute('aria-pressed',String(b===button)));
+    apply();
+  }));
+  search.addEventListener('input',apply);
+  document.querySelectorAll('.quick-link').forEach(link=>link.addEventListener('click',()=>{
+    age='all';
+    buttons.forEach(b=>b.setAttribute('aria-pressed',String(b.dataset.age==='all')));
+    search.value='';
+    apply();
+  }));
+  apply();
+})();
+</script>
 </body>
 </html>
