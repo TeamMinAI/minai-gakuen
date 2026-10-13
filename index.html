@@ -30,10 +30,10 @@ main{width:min(100%,820px);margin:auto;padding:14px 12px 28px}
 .filter[aria-pressed="true"]{background:#2f4fbf;color:white;border-color:#2f4fbf}
 .quick-title{margin:15px 2px 8px;font-size:13px;font-weight:900}
 .quick-links{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:8px}
-.quick-link{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:4px;min-height:76px;padding:9px 4px;text-align:center;text-decoration:none;background:#fff;border:1px solid var(--line);border-radius:16px;box-shadow:var(--shadow);font-size:11px;font-weight:850}
-.quick-link .emoji{font-size:23px;line-height:1.2}
+.quick-link{appearance:none;width:100%;font-family:inherit;cursor:pointer;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:4px;min-height:76px;padding:9px 4px;text-align:center;text-decoration:none;background:#fff;border:1px solid var(--line);border-radius:16px;box-shadow:var(--shadow);font-size:11px;font-weight:850}
+.quick-link .emoji{font-size:23px;line-height:1.2}.quick-link.selected{border-color:#3458d4;box-shadow:0 0 0 2px rgba(52,88,212,.18);background:#eef2ff}
 .quick-link.preschool{background:#fff2cf;border-color:#f4d77d}
-.section{margin:16px 0 0;padding:15px 11px 12px;border-radius:22px;border:1px solid rgba(30,45,80,.05);box-shadow:var(--shadow);scroll-margin-top:140px}
+.section{margin:16px 0 0;padding:15px 11px 12px;border-radius:22px;border:1px solid rgba(30,45,80,.05);box-shadow:var(--shadow);scroll-margin-top:12px}
 .section.sougou{background:#fff0d9}.section.sansuu{background:#fff4d9}.section.kokugo{background:#ffeaf0}.section.shakai{background:#e8f4ff}.section.rika{background:#e9f8eb}.section.eigo{background:#f0eaff}.section.preschool{background:#fff0c9;border:2px solid #f0cf67}.section.family{background:#e9f6ff;border:2px solid #b9ddf8}
 .section-head{display:flex;align-items:center;gap:8px;margin:0 3px 10px}
 .section-head h2{margin:0;font-size:19px;line-height:1.3;font-weight:950}
@@ -74,15 +74,16 @@ main{width:min(100%,820px);margin:auto;padding:14px 12px 28px}
     </div>
   </div>
 
-  <div class="quick-title">どんなあそびをする？</div>
+  <div class="quick-title">タップしてゲームをえらぼう</div>
   <nav class="quick-links" aria-label="ゲームの種類">
-    <a class="quick-link" href="#family"><span class="emoji">🎮</span>みんなで遊ぶ</a>
-    <a class="quick-link preschool" href="#preschool"><span class="emoji">🎒</span>しょうがっこうへいこう</a>
-    <a class="quick-link" href="#sougou"><span class="emoji">🗺️</span>ぼうけんする</a>
-    <a class="quick-link" href="#sansuu"><span class="emoji">🔢</span>かずであそぶ</a>
-    <a class="quick-link" href="#kokugo"><span class="emoji">🔤</span>ことばであそぶ</a>
-    <a class="quick-link" href="#shakai"><span class="emoji">🌏</span>日本を知る</a>
-    <a class="quick-link" href="#rika"><span class="emoji">🔬</span>ふしぎを発見</a>
+    <button class="quick-link selected" type="button" data-section="family"><span class="emoji">🎮</span>みんなで遊ぶ</button>
+    <button class="quick-link preschool" type="button" data-section="preschool"><span class="emoji">🎒</span>小学校じゅんび</button>
+    <button class="quick-link" type="button" data-section="sougou"><span class="emoji">🗺️</span>ぼうけんする</button>
+    <button class="quick-link" type="button" data-section="sansuu"><span class="emoji">🔢</span>算数</button>
+    <button class="quick-link" type="button" data-section="kokugo"><span class="emoji">🔤</span>国語</button>
+    <button class="quick-link" type="button" data-section="shakai"><span class="emoji">🌏</span>社会</button>
+    <button class="quick-link" type="button" data-section="rika"><span class="emoji">🔬</span>理科</button>
+    <button class="quick-link" type="button" data-section="eigo"><span class="emoji">🌟</span>英語</button>
   </nav>
 
   <section class="section family" id="family">
@@ -169,7 +170,9 @@ main{width:min(100%,820px);margin:auto;padding:14px 12px 28px}
   const games=[...document.querySelectorAll('.game')];
   const sections=[...document.querySelectorAll('.section')];
   const empty=document.getElementById('emptyMessage');
+  const categoryButtons=[...document.querySelectorAll('.quick-link[data-section]')];
   let age='all';
+  let activeSection='family';
   function apply(){
     const q=search.value.trim().toLocaleLowerCase();
     let shown=0;
@@ -181,15 +184,32 @@ main{width:min(100%,820px);margin:auto;padding:14px 12px 28px}
       if(visible)shown++;
     });
     sections.forEach(section=>{
-      const visible=[...section.querySelectorAll('.game')].some(card=>!card.hidden);
-      section.hidden=!visible;
+      const hasMatch=[...section.querySelectorAll('.game')].some(card=>!card.hidden);
+      section.hidden=!hasMatch||(activeSection!=='all'&&section.id!==activeSection);
     });
+    categoryButtons.forEach(b=>b.classList.toggle('selected',b.dataset.section===activeSection));
     empty.style.display=shown?'none':'block';
   }
   buttons.forEach(button=>button.addEventListener('click',()=>{
     age=button.dataset.age;
+    activeSection='all';
     buttons.forEach(b=>b.setAttribute('aria-pressed',String(b===button)));
     apply();
+  }));
+  categoryButtons.forEach(button=>button.addEventListener('click',()=>{
+    activeSection=button.dataset.section;
+    age='all';
+    buttons.forEach(b=>b.setAttribute('aria-pressed',String(b.dataset.age==='all')));
+    search.value='';
+    apply();
+    const target=document.getElementById(activeSection);
+    if(target) target.scrollIntoView({behavior:'smooth',block:'start'});
+  }));
+  search.addEventListener('input',()=>{
+    activeSection='all';
+    apply();
+  });
+  apply();
   }));
   search.addEventListener('input',apply);
   document.querySelectorAll('.quick-link').forEach(link=>link.addEventListener('click',()=>{
