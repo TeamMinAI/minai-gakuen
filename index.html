@@ -208,4 +208,54 @@ main{width:min(100%,900px);margin:auto;padding:8px 10px 22px}
 })();
 </script>
 </body>
+</html
+
+
+</main>
+<footer class="footer"><strong>みんあい学園</strong>公開中のゲームは試作・改善中のものもあります。<br>気づいたことや感想をぜひ教えてください。<br><br>© Team-MinAI / みんあい学園</footer>
+<script>
+(function(){
+  const search=document.getElementById('gameSearch');
+  const buttons=[...document.querySelectorAll('[data-age].filter')];
+  const games=[...document.querySelectorAll('.game')];
+  const sections=[...document.querySelectorAll('.section')];
+  const categoryButtons=[...document.querySelectorAll('.quick-link[data-section]')];
+  const empty=document.getElementById('emptyMessage');
+  let age='all';
+  let activeSection='family';
+  function apply(){
+    const q=search.value.trim().toLocaleLowerCase();
+    let shown=0;
+    games.forEach(card=>{
+      const matchAge=age==='all'||card.dataset.age===age;
+      const matchText=!q||card.textContent.toLocaleLowerCase().includes(q);
+      const visible=matchAge&&matchText;
+      card.hidden=!visible;
+      if(visible)shown++;
+    });
+    sections.forEach(section=>{
+      const hasMatch=[...section.querySelectorAll('.game')].some(card=>!card.hidden);
+      section.hidden=!hasMatch||(activeSection!=='all'&&section.id!==activeSection);
+    });
+    categoryButtons.forEach(b=>b.classList.toggle('selected',b.dataset.section===activeSection));
+    empty.style.display=shown?'none':'block';
+  }
+  buttons.forEach(button=>button.addEventListener('click',()=>{
+    age=button.dataset.age;
+    activeSection='all';
+    buttons.forEach(b=>b.setAttribute('aria-pressed',String(b===button)));
+    apply();
+  }));
+  categoryButtons.forEach(button=>button.addEventListener('click',()=>{
+    activeSection=button.dataset.section;
+    age='all';
+    buttons.forEach(b=>b.setAttribute('aria-pressed',String(b.dataset.age==='all')));
+    search.value='';
+    apply();
+  }));
+  search.addEventListener('input',()=>{activeSection='all';apply();});
+  apply();
+})();
+</script>
+</body>
 </html>
