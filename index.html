@@ -76,14 +76,14 @@ main{width:min(100%,900px);margin:auto;padding:8px 10px 22px}
 
   <div class="quick-title">タップしてゲームをえらぼう</div>
   <nav class="quick-links" aria-label="ゲームの種類">
-    <button class="quick-link selected" type="button" data-section="family"><span class="emoji">🎮</span>みんなで遊ぶ</button>
-    <button class="quick-link preschool" type="button" data-section="preschool"><span class="emoji">🎒</span>小学校じゅんび</button>
-    <button class="quick-link" type="button" data-section="sougou"><span class="emoji">🗺️</span>ぼうけんする</button>
+    <button class="quick-link" type="button" data-section="sougou"><span class="emoji">🗺️</span>総合学習</button>
     <button class="quick-link" type="button" data-section="sansuu"><span class="emoji">🔢</span>算数</button>
     <button class="quick-link" type="button" data-section="kokugo"><span class="emoji">🔤</span>国語</button>
     <button class="quick-link" type="button" data-section="shakai"><span class="emoji">🌏</span>社会</button>
     <button class="quick-link" type="button" data-section="rika"><span class="emoji">🔬</span>理科</button>
     <button class="quick-link" type="button" data-section="eigo"><span class="emoji">🌟</span>英語</button>
+    <button class="quick-link preschool" type="button" data-section="preschool"><span class="emoji">🎒</span>小学校じゅんび</button>
+    <button class="quick-link" type="button" data-section="family"><span class="emoji">🎮</span>みんなで遊ぶ</button>
   </nav>
 
   <section class="section sougou" id="sougou">
@@ -172,7 +172,7 @@ main{width:min(100%,900px);margin:auto;padding:8px 10px 22px}
   const categoryButtons=[...document.querySelectorAll('.quick-link[data-section]')];
   const empty=document.getElementById('emptyMessage');
   let age='all';
-  let activeSection='family';
+  let activeSection='all';
   function apply(){
     const q=search.value.trim().toLocaleLowerCase();
     let shown=0;
@@ -222,7 +222,7 @@ main{width:min(100%,900px);margin:auto;padding:8px 10px 22px}
   const categoryButtons=[...document.querySelectorAll('.quick-link[data-section]')];
   const empty=document.getElementById('emptyMessage');
   let age='all';
-  let activeSection='family';
+  let activeSection='all';
   function apply(){
     const q=search.value.trim().toLocaleLowerCase();
     let shown=0;
