@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://teamminai.github.io/minai-gakuen/sitemap.xml
