@@ -31,14 +31,8 @@
 html{scroll-behavior:smooth;scroll-padding-top:12px}
 body{margin:0;font-family:system-ui,-apple-system,BlinkMacSystemFont,"Noto Sans JP",sans-serif;color:var(--ink);background:var(--paper);line-height:1.5}
 a{color:inherit}
-.hero{position:relative;overflow:hidden;padding:12px 14px 13px;text-align:center;color:#fff;background:linear-gradient(145deg,#243d86,#5c73dc 60%,#8a9bf1)}
-.hero:before,.hero:after{content:"";position:absolute;border-radius:50%;background:rgba(255,255,255,.09);pointer-events:none}
-.hero:before{width:190px;height:190px;left:-90px;top:-100px}.hero:after{width:240px;height:240px;right:-110px;bottom:-170px}
-.brand,.hero h1,.hero p,.free-note{position:relative;z-index:1}
-.brand{font-size:9px;letter-spacing:.16em;font-weight:900;opacity:.85}
-.hero h1{margin:2px 0;font-size:clamp(23px,6vw,30px);line-height:1.15;font-weight:950;letter-spacing:.04em}
-.hero p{margin:3px 0 7px;font-size:12px}
-.free-note{display:inline-flex;align-items:center;gap:5px;padding:4px 9px;border:1px solid rgba(255,255,255,.35);border-radius:999px;background:rgba(255,255,255,.13);font-size:12px;font-weight:800}
+.hero-image{width:100%;margin:0;padding:0;line-height:0;background:#eaf5ff;overflow:hidden}
+.hero-image img{display:block;width:100%;height:auto;max-height:560px;object-fit:contain;object-position:center;margin:0 auto}
 main{width:min(100%,900px);margin:auto;padding:8px 10px 22px}
 .intro{margin:0 3px 7px;color:var(--muted);font-size:11px}
 .finder{position:static;z-index:10;margin:0 0 8px;padding:0 0 6px;background:rgba(245,248,255,.96);backdrop-filter:blur(12px);border-bottom:1px solid rgba(220,227,240,.85)}
@@ -70,16 +64,13 @@ main{width:min(100%,900px);margin:auto;padding:8px 10px 22px}
 .footer{padding:24px 15px 34px;text-align:center;color:#788197;font-size:11px}
 .footer strong{display:block;color:#49546c;font-size:12px;margin-bottom:5px}
 @media(min-width:560px){main{padding:12px 16px 28px}.games{grid-template-columns:repeat(3,minmax(0,1fr))}.section{padding:14px}.game{min-height:110px;padding:11px}.game-icon{width:42px;height:42px;flex-basis:42px}.game-title{font-size:13px}.description{font-size:10px}}
-@media(min-width:760px){.hero{padding:18px 20px 17px}.hero p{font-size:13px}.games{grid-template-columns:repeat(4,minmax(0,1fr))}.quick-link{min-height:64px}.section{padding:16px}}
+@media(min-width:760px){.games{grid-template-columns:repeat(4,minmax(0,1fr))}.quick-link{min-height:64px}.section{padding:16px}}
 @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}*{transition:none!important}}
 </style>
 </head>
 <body>
-<header class="hero">
-  <div class="brand">TEAM-MinAI</div>
-  <h1>みんあい学園</h1>
-  <p>遊んでいたら、いつの間にか学んでいた。</p>
-  <div class="free-note">⭐ ぜんぶ無料・課金なし</div>
+<header class="hero-image">
+  <img src="assets/minai-gakuen-hero.png" alt="みんあい学園のトップイラスト。子どもたちとうさぎが学びの冒険を楽しむ、国語・算数・社会・理科・英語の学習ゲームサイト" width="1672" height="941" fetchpriority="high" decoding="async">
 </header>
 <main>
   <p class="intro">あそびたいゲームをえらんでね。おうちの人といっしょに選んでもOK！</p>
